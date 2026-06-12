@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoAgro - Agrinho 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Variáveis de Cores para Identidade Visual do Agrinho (Verdes e Tons Terra) */
+        :root {
+            --primary: #2e7d32;
+            --primary-light: #4caf50;
+            --secondary: #8d6e63;
+            --background: #f1f8e9;
+            --text: #263238;
+            --white: #ffffff;
+            --card-shadow: 0 8px 30px rgba(0,0,0,0.06);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--white);
+            padding: 1.5rem 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .badge-agrinho {
+            background-color: #ff9100;
+            color: white;
+            padding: 0.25rem 0.7rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 3.5rem 1rem;
+            background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+            border-radius: 16px;
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 {
+            color: var(--primary);
+            font-size: 2.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .card h2 {
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 0.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        select, input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        select:focus, input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        button {
+            width: 100%;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.1s;
+        }
+
+        button:hover {
+            background-color: var(--primary-light);
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        .results {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .result-box {
+            background: #fafafa;
+            border-left: 5px solid var(--primary);
+            padding: 1rem;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .result-box.co2 {
+            border-left-color: #795548;
+        }
+
+        .result-val {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-top: 0.25rem;
+        }
+
+        .producers-section {
+            margin-top: 4rem;
+        }
+
+        .producers-section h2 {
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        .producers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .producer-card {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s;
+            border: 1px solid #e8f5e9;
+        }
+
+        .producer-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .producer-info {
+            padding: 1.5rem;
+        }
+
+        .producer-tag {
+            background: #e8f5e9;
+            color: var(--primary);
+            padding: 0.2rem 0.6rem;
+            font-size: 0.75rem;
+            border-radius: 20px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 0.5rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2.5rem;
+            margin-top: 5rem;
+            color: #777;
+            border-top: 1px solid #e0e0e0;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">🌱 EcoAgro</div>
+        <div><span class="badge-agrinho">Agrinho 2026</span></div>
+    </header>
+
+    <div class="container">
+        <section class="hero">
+            <h1>Sustentabilidade e Campo Conectados</h1>
+            <p>Monitore o impacto ambiental dos seus alimentos e descubra o valor do pequeno produtor rural.</p>
+        </section>
+
+        <div class="main-grid">
+            
+            <section class="card">
+                <h2>Simulador de Pegada Ecológica</h2>
+                <div class="form-group">
+                    <label for="food-select">Escolha o Alimento:</label>
+                    <select id="food-select">
+                        <option value="carne">Carne Bovina (1kg)</option>
+                        <option value="arroz">Arroz (1kg)</option>
+                        <option value="feijao">Feijão (1kg)</option>
+                        <option value="tomate">Tomate (1kg)</option>
+                        <option value="maca">Maçã (1kg)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="quantity">Quantidade consumida ou desperdiçada (em kg):</label>
+                    <input type="number" id="quantity" value="1" min="0.1" step="0.1">
+                </div>
+                <button onclick="calcularImpacto()">Calcular Impacto Atualizado</button>
+            </section>
+
+            <section class="card">
+                <h2>Impacto Estimado no Planeta</h2>
+                <div class="results">
+                    <div class="result-box">
+                        <p>Pegada Hídrica Total (Água consumida no ciclo):</p>
+                        <div class="result-val" id="water-result">15.000 Litros</div>
+                    </div>
+                    <div class="result-box co2">
+                        <p>Emissão de Gases Estufa (CO₂ equivalente):</p>
+                        <div class="result-val" id="carbon-result">27,0 kg</div>
+                    </div>
+                    <div style="margin-top: 0.5rem; font-size: 0.85rem; color: #555; background: #fffde7; padding: 0.75rem; border-radius: 8px;">
+                        <strong>Dica Ecológica:</strong> Reduzir o desperdício de alimentos preserva diretamente os recursos hídricos e protege o solo cultiv
